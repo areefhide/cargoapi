@@ -43,9 +43,9 @@ exports.createProject = async function (params) {
 };
 
 exports.updateProjectVal = async function (params) {
-    var nilai = -params.nilai;
+    var nilai = int.parse(params.nilai);
     try {
-        var project = await Project.findByIdAndUpdate(params.id,{$inc: {sisa: nilai}});
+        var project = await Project.findByIdAndUpdate(params.id,{$inc: {sisa: -nilai}});
         return project;
     } catch (error) {
         throw Error('Error while update Project');

@@ -29,7 +29,7 @@ exports.getLogin = async function (req, res, next) {
 exports.signUp = async function(req,res,next){
     var user = req.body;
     try {
-        var createdUser = loginservice.create(user);
+        var createdUser = await loginservice.create(user);
         return res.status(200).json({status: 200, data: createdUser, message: 'Successfully create User'});
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message});

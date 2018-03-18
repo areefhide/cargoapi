@@ -13,6 +13,8 @@ var PaketSchema = new mongoose.Schema({
     tanggal: { type: Date, default: Date.now },
     biayakirim: Number,
     biayatambahan: Number,
+    projectId: {type: Schema.Types.ObjectId, ref: 'Project'},
+    status: String,
 });
  PaketSchema.plugin(mongoosePaginate);
  const Paket = mongoose.model('Paket',PaketSchema);

@@ -8,7 +8,7 @@ var PaketDetailSchema = new mongoose.Schema({
     isi: String,
     jumlah: Number,
     berat: Number,
-    paket:{ type: Schema.Types.ObjectId, ref: 'Paket'},
+    paketId:{ type: Schema.Types.ObjectId, ref: 'Paket'},
 });
 
 PaketDetailSchema.plugin(mongoosePaginate);

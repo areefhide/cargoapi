@@ -3,8 +3,8 @@ var customerservice = require('../service/customer.service');
 _this = this;
 
 exports.getCustomers = async function (req, res, next) {
-    var page = req.query.page ? req.query.page : 1
-    var limit = req.query.limit ? req.query.limit : 10;
+    var page = req.query.page ? parseInt(req.query.page) : 1
+    var limit = req.query.limit ? parseInt(req.query.limit) : 10;
     try {
         var customers = await customerservice.getCustomers({},page,limit);
         return res.status(200).json({status: 200, data: customers, message: 'Successfully get Customers'});

@@ -41,6 +41,8 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
+
+var multer = require('multer');
 app.use(passport.initialize());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,8 +55,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
+app.use(multer({dest: '/uploads/'}));
+app.use('/',passport.authenticate('jwt',{session:false}), index);
 app.use('/users', users);
 app.use('/api', api);
 

@@ -8,6 +8,7 @@ var passport = require('passport');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var projects = require('./routes/project');
 var api = require('./routes/api.route');
 var bluebird = require('bluebird');
 
@@ -55,9 +56,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(multer({dest: '/uploads/'}));
-app.use('/',passport.authenticate('jwt',{session:false}), index);
+// app.use(multer({dest: '/uploads/'}));
+app.use('/', index);
 app.use('/users', users);
+app.use('/projects', projects);
 app.use('/api', api);
 
 // catch 404 and forward to error handler

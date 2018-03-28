@@ -1,5 +1,3 @@
-import { doesNotThrow } from 'assert';
-
 var Project = require('../models/Project');
 _this = this;
 

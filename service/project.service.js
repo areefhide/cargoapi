@@ -33,7 +33,7 @@ exports.createProject = async function (params) {
        sisa: params.sisa
    }); 
    try {
-       var savedProject = await doesNotThrow.save();
+       var savedProject = await newProject.save();
        return savedProject;
    } catch (error) {
        throw Error('Error while save Project');

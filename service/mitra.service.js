@@ -18,7 +18,7 @@ exports.getMitras = async function (query, page, limit) {
 exports.createMitra = async function(params){
     var wilayah = [];
     params.wilayah.forEach(element => {
-        wilayah.push({ kota: element.kota});
+        wilayah.push({ kota: element});
     });
     var newMitra = new Mitra({
         nama: params.nama,

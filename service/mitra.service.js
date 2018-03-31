@@ -18,7 +18,7 @@ exports.getMitras = async function (query, page, limit) {
 exports.createMitra = async function(params){
     var wilayah = [];
     params.wilayah.forEach(element => {
-        wilayah.push({ kota: element});
+        wilayah.push(element);
     });
     var newMitra = new Mitra({
         nama: params.nama,
@@ -40,5 +40,14 @@ exports.getMitrabyName = async function(name){
         return mitra;
     } catch (error) {
         throw Error('error while get Mitra');
+    }
+};
+
+exports.deletMitra = async function(id){
+    try {
+        var deleted = await Mitra.findOneAndRemove({_id:id});
+        return deleted;
+    } catch (e) {
+        throw Error("Error Occured while Deleting the Mitra");
     }
 };

@@ -6,7 +6,7 @@ var MitraSchema = new Schema({
     nama: String,
     pic: String,
     userid: {type: Schema.Types.ObjectId, ref: 'User'},
-    wilayah:[{kota: String}],
+    wilayah:[String],
 });
 MitraSchema.plugin(mongoosePaginate);
 

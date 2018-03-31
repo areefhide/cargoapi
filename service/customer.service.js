@@ -28,7 +28,7 @@ exports.getCustomer = async function(nama){
 exports.createCustomer = async function(customer){
     var newCustomer = new Customer({
         nama: customer.nama,
-        alamat: customer.alamat,
+        perusahaan: customer.perusahaan,
         provinsi: customer.provinsi,
         telepon: customer.telepon
     });

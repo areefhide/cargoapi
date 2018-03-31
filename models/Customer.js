@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var CustomerSchema = new Schema({
     nama: String,
     alamat: String,
-    provinsi: String,
+    perusahaan: String,
     telepon: String,
 });
 

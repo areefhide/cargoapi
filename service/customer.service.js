@@ -29,12 +29,12 @@ exports.createCustomer = async function(customer){
     var newCustomer = new Customer({
         nama: customer.nama,
         perusahaan: customer.perusahaan,
-        provinsi: customer.provinsi,
+        alamat: customer.alamat,
         telepon: customer.telepon
     });
     try {
-        var savedKota = await newCustomer.save();
-        return savedKota;
+        var newCustomer = await newCustomer.save();
+        return newCustomer;
     } catch (e) {
         throw Error("Error while Creating Kota");
     }
@@ -42,10 +42,7 @@ exports.createCustomer = async function(customer){
 
 exports.deleteCustomer = async function(id){
     try {
-        var deleted = await Customer.remove({_id:id});
-        if(deleted.result.n === 0){
-            throw Error("Customer Could not be deleted");
-        }
+        var deleted = await Customer.findOneAndRemove({_id:id});        
         return deleted;
     } catch (e) {
         throw Error("Error Occured while Deleting the Customer")

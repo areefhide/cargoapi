@@ -39,6 +39,6 @@ exports.deleteCustomer = async function (req, res, next) {
         var deletedCustomer = await customerservice.deleteCustomer(id);
         return res.status(204).json({status:204, message: "Succesfully delete Customer"});
     } catch (e) {
-        
+        return res.status(400).json({status: 400, message: e.message});
     }
 };

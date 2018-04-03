@@ -8,10 +8,12 @@ exports.createPaket = async function (req, res, next) {
     var paket = req.body;
     try {
         var header = await paketservice.createPaket(paket);
-        paket.details.forEach(element => {
-            var paketdetail = {isi: element.isi, jumlah: element.jumlah, berat: element.berat, paketId: header._id };
-            var saveddetail = await paketdetailservice.createPaketDetail(paketdetail);
-        });
+        var details = paket.details;
+        var paketId = header._id;
+        for (let index = 0; index < details.length; index++) {
+            var savedDetail = await paketdetailservice.createPaketDetail(details[i]);    
+        }       
+       
         var history = new {status: 'Diterima Cargo', paketId: header._id};
         var updatedHistory = await pakethistoryservice.createHistory(history);
         return res.status(200).json({status: 200, data: header, message: 'Successfully create Paket'});

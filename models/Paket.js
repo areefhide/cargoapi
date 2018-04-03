@@ -1,7 +1,6 @@
-import { SchemaTypes, Schema } from 'mongoose';
-
 var mongoose = require('mongoose');
 var mongoosePaginate = require('mongoose-paginate');
+var Schema = mongoose.Schema;
 
 var PaketSchema = new mongoose.Schema({
     company: String,

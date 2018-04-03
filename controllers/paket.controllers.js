@@ -42,3 +42,15 @@ exports.getPaket = async function(req, res, next){
         return res.status(400).json({status: 400, message: e.message});
     }
 };
+
+exports.getPaketsByStatus = async function(req,res,next){
+    var status = req.params.status;
+    var page = req.query.page ? parseInt(req.query.page) : 1
+    var limit = req.query.limit ? parseInt(req.query.limit) : 10;
+    try {
+        var pakets = await paketservice.getPakets({islunas: status},page,limit);
+        return res.status(200).json({status: 200, data: pakets, message: 'Successfully get Pakets'});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};

@@ -14,7 +14,8 @@ exports.createPaket = async function (params) {
         biayakirim: params.biayakirim,
         biayatambahan: params.biayatambahan,
         projectId: params.projectId,
-        status: 'Diterima Cargo'
+        status: 'Diterima Cargo',
+        islunas: params.islunas,
     });
 
     try {

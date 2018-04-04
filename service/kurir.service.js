@@ -40,12 +40,12 @@ exports.getKurir = async function (params) {
     }
 };
 
-exports.getKurirByUserId = function (params) {
-    var userId = params.userId;  
-    try {
-        var kurir = await Kurir.findOne({userId: userId});
-        return kurir;
-    } catch (error) {
-        throw Error('error while get Kurir');
-    }
-};
+// exports.getKurirByUserId = function (params) {
+//     var userId = params.userId;  
+//     try {
+//         var kurir = await Kurir.findOne({userId: ObjectId(userId)});
+//         return kurir;
+//     } catch (error) {
+//         throw Error('error while get Kurir');
+//     }
+// };

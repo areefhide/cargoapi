@@ -9,8 +9,10 @@ exports.createPaketDetail = async function (params) {
         berat: params.berat,
         paketId: params.paketId
     });  
+    console.log(params);
     try {
         var savedDetail = await newPaketDetail.save();
+        console.log(savedDetail);
         return savedDetail;
     } catch (error) {
         throw Error('Error while saving Paket Detail');

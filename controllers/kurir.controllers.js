@@ -15,7 +15,7 @@ exports.getKurirs = async function (req, res, next) {
 exports.createKurir = async function (req, res, next) {
     var kurir = req.body;
     try {
-        var newkurir = await kurirservice.createMitra(mitra);
+        var newkurir = await kurirservice.createKurir(kurir);
         return res.status(200).json({status: 200, data: newkurir, message: 'Successfully create Kurir'});
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message});

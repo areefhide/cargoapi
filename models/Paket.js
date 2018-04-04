@@ -15,6 +15,7 @@ var PaketSchema = new mongoose.Schema({
     projectId: {type: Schema.Types.ObjectId, ref: 'Project'},
     status: String,
     islunas: Boolean,
+    pic: String,
 });
  PaketSchema.plugin(mongoosePaginate);
  const Paket = mongoose.model('Paket',PaketSchema);

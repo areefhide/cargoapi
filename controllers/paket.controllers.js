@@ -2,6 +2,7 @@ var paketservice = require('../service/paket.service');
 var paketdetailservice = require('../service/paketdetail.service');
 var pakethistoryservice = require('../service/pakethistory.service');
 
+
 _this = this;
 
 exports.createPaket = async function (req, res, next) {
@@ -11,11 +12,20 @@ exports.createPaket = async function (req, res, next) {
         var details = paket.details;
         var paketId = header._id;
         for (let index = 0; index < details.length; index++) {
-            var savedDetail = await paketdetailservice.createPaketDetail(details[i]);    
+            console.log(details[index]);
+            var data = {
+                isi: details[index].isi,
+                jumlah: details[index].jumlah,
+                berat: details[index].berat,
+                paketId: paketId
+            };
+            var savedDetail = await paketdetailservice.createPaketDetail(data);    
         }       
-       
-        var history = new {status: 'Diterima Cargo', paketId: header._id};
+        console.log(details);
+        var history = {status: 'Diterima Cargo', paketId: header._id,tanggal:header.tanggal};
+        
         var updatedHistory = await pakethistoryservice.createHistory(history);
+        console.log(updatedHistory);
         return res.status(200).json({status: 200, data: header, message: 'Successfully create Paket'});
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message});

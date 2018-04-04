@@ -3,6 +3,7 @@ var PaketHistory = require('../models/PaketHistory');
 _this = this;
 
 exports.createHistory = async function (params) {
+    console.log(params);
     var newhistory = new PaketHistory({
         status: params.status,
         paketId: params.paketId,
@@ -10,7 +11,7 @@ exports.createHistory = async function (params) {
         attachment: params.attachment,
         pic: params.pic
     });
-
+    console.log(params);
     try {
         var savedHistory = newhistory.save();
         return savedHistory;

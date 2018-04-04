@@ -23,7 +23,8 @@ exports.findbyId = async function(id){
 exports.create = async function(params){
     var newUser = new User({
         username: params.username,
-        password: params.password
+        password: params.password,
+        role: params.role
     });
     try {
         var createdUser = await newUser.save();

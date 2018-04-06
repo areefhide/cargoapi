@@ -7,6 +7,7 @@ exports.getKurirs = async function (req, res, next) {
     var limit = req.query.limit ? parseInt(req.query.limit) : 10;
     try {
         var kurirs = await kurirservice.getKurirs({},page,limit);
+        console.log(req.headers);
         return res.status(200).json({status: 200, data: kurirs, message: 'Successfully get Kurir'});
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message});

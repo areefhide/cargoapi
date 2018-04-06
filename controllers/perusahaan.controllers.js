@@ -12,6 +12,7 @@ exports.createCompany = async function (req,res,next) {
 };
 
 exports.getCompanies = async function (req,res,next) {
+    console.log(req.headers);
     var page = req.query.page ? parseInt(req.query.page) : 1
     var limit = req.query.limit ? parseInt(req.query.limit) : 10;
     try {

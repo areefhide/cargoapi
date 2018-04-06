@@ -25,6 +25,15 @@ exports.getCustomer = async function(nama){
     }
 };
 
+exports.getCustomerById = async function(id){
+    try {
+        var customer = await Customer.findOne({_id : id});
+        return customer;
+    } catch (err) {
+        throw Error('error while get Customer');
+    }
+};
+
 exports.createCustomer = async function(customer){
     var newCustomer = new Customer({
         nama: customer.nama,

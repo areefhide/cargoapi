@@ -23,6 +23,16 @@ exports.getCustomer = async function (req, res, next) {
     }
 };
 
+exports.getCustomerbyId = async function (req, res, next) {
+    var id = req.params.id;
+    try {
+        var customer = await customerservice.getCustomerById(id);
+        return res.status(200).json({status: 200, data: customer, message: 'Successfully get Customer'});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};
+
 exports.createCustomer = async function (req, res, next) {
   var customer = req.body;
   try {

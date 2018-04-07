@@ -29,9 +29,14 @@ exports.createPaket = async function (params) {
 exports.getPakets = async function (query, page, limit) {
     var options = {
         page,
-        limit
+        limit,
+        populate:[{path:'pengirim',select: 'nama',model: 'Customer'},
+                    {path:'penerima',select: 'nama',model: 'Customer'} ]
     };  
     try {
+        // var paket = await Paket.find({})
+        //     .populate({path:'pengirim',select: 'nama',model: 'Customer'});
+            // console.log(paket);
         var pakets = await Paket.paginate(query,options);
         return pakets;
     } catch (error) {
@@ -41,7 +46,10 @@ exports.getPakets = async function (query, page, limit) {
 
 exports.getPaketById = async function (id) {
     try {
-        var paket = await Paket.findOne({_id:id});
+        var paket = await Paket.findOne({_id:id})
+        .populate({path:'pengirim',model: 'Customer'})
+        .populate({path:'penerima',model: 'Customer'})
+        .populate({path: 'projectId',model: 'Project'});
         return paket;
     } catch (error) {
         throw Error('Error while get Paket');

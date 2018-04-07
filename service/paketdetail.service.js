@@ -23,7 +23,10 @@ exports.createPaketDetail = async function (params) {
 exports.getPaketDetails = async function (query, page, limit) {
     var options = {
         page,
-        limit
+        limit,
+        populate:[
+            {path: 'paketId',model:'Paket'}
+        ]
     };  
     try {
         var paketDetails = await PaketDetail.paginate(query, options);

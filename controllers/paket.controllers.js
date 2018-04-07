@@ -47,8 +47,9 @@ exports.getPaket = async function(req, res, next){
     var id = req.params.id;
     try {
         var paket = await paketservice.getPaketById(id);
-        var paketdetail = await paketdetailservice.getPaketDetails({PaketId: id},100,100);
+        var paketdetail = await paketdetailservice.getPaketDetails({ paketId: paket._id},100,100);
         paket.paketdetail = paketdetail;
+        console.log(paketdetail);
         return res.status(200).json({status: 200, data: paket, message: 'Successfully get Pakets'});
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message});

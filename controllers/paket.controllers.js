@@ -1,6 +1,7 @@
 var paketservice = require('../service/paket.service');
 var paketdetailservice = require('../service/paketdetail.service');
 var pakethistoryservice = require('../service/pakethistory.service');
+var mongoose = require('mongoose');
 
 
 _this = this;
@@ -17,6 +18,7 @@ exports.createPaket = async function (req, res, next) {
                 isi: details[index].isi,
                 jumlah: details[index].jumlah,
                 berat: details[index].berat,
+                paketstring: paketId.toString(),
                 paketId: paketId
             };
             var savedDetail = await paketdetailservice.createPaketDetail(data);    
@@ -47,10 +49,25 @@ exports.getPaket = async function(req, res, next){
     var id = req.params.id;
     try {
         var paket = await paketservice.getPaketById(id);
-        var paketdetail = await paketdetailservice.getPaketDetails({ paketId: paket._id},100,100);
-        paket.paketdetail = paketdetail;
-        console.log(paketdetail);
+        console.log(id);
+        // var paketdetail = await paketdetailservice.getPaketDetails({ paket: paket},100,100);
+        // paket.paketdetail = paketdetail;
+        // console.log(paketdetail);
         return res.status(200).json({status: 200, data: paket, message: 'Successfully get Pakets'});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};
+
+exports.getPaketDetails = async function (req, res, next) {
+    var id = req.params.id;
+    try {        
+        var paket = await paketservice.getPaketById(id);
+        var details = await paketdetailservice.getPaketDetailByPaketId({paketstring: id});
+        console.log(details);
+        // var paketdetail = await paketdetailservice.getPaketDetails({ paket: paket},100,100);        
+        // console.log(paketdetail);
+        return res.status(200).json({status: 200, data: details, message: 'Successfully get Paket Detail'});
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message});
     }

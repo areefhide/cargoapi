@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var MitraSchema = new Schema({
     nama: String,
     pic: String,
-    userid: {type: Schema.Types.ObjectId, ref: 'User'},
+    username: String,
     wilayah:[String],
 });
 MitraSchema.plugin(mongoosePaginate);

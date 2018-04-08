@@ -24,9 +24,11 @@ exports.createPaket = async function (req, res, next) {
             var savedDetail = await paketdetailservice.createPaketDetail(data);    
         }       
         console.log(details);
-        var history = {status: 'Diterima Cargo', paketId: header._id,tanggal:header.tanggal};
+        var history = {status: 'Diterima Cargo', tanggal:header.tanggal};        
         
         var updatedHistory = await pakethistoryservice.createHistory(history);
+        header.history.add(updatedHistory._id);
+        header.save();
         console.log(updatedHistory);
         return res.status(200).json({status: 200, data: header, message: 'Successfully create Paket'});
     } catch (e) {

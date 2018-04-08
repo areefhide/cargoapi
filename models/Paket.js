@@ -16,6 +16,7 @@ var PaketSchema = new mongoose.Schema({
     status: String,
     islunas: Boolean,
     pic: String,
+    history:[{type: Schema.Types.ObjectId, ref: 'PaketHistory'},]
 });
  PaketSchema.plugin(mongoosePaginate);
  const Paket = mongoose.model('Paket',PaketSchema);

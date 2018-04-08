@@ -6,5 +6,6 @@ var kurirController = require('../../controllers/kurir.controllers');
 router.get('/',kurirController.getKurirs);
 router.post('/',kurirController.createKurir);
 router.get('/:nama',kurirController.getKurir);
+router.get('/:username/user',kurirController.getKurirbyUser);
 
 module.exports = router;

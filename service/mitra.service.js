@@ -23,7 +23,7 @@ exports.createMitra = async function(params){
     var newMitra = new Mitra({
         nama: params.nama,
         pic: params.pic,
-        userid: params.userid,
+        username: params.username,
         wilayah: wilayah
     });
     try {

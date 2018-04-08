@@ -20,6 +20,7 @@ exports.createKurir = async function (params) {
     var newKurir = new Kurir({
         nama : params.nama,
         MitraId : params.MitraId,
+        username: params.username,
         userId : params.userId
     });
     try {
@@ -40,12 +41,12 @@ exports.getKurir = async function (params) {
     }
 };
 
-// exports.getKurirByUserId = function (params) {
-//     var userId = params.userId;  
-//     try {
-//         var kurir = await Kurir.findOne({userId: ObjectId(userId)});
-//         return kurir;
-//     } catch (error) {
-//         throw Error('error while get Kurir');
-//     }
-// };
+exports.getKurirByUsername = async function (params) {  
+    var nama = params.username;
+    try {
+        var kurir = await Kurir.findOne();
+        return kurir;
+    } catch (error) {
+        throw Error('error while get Kurir');
+    }
+};

@@ -32,3 +32,12 @@ exports.getKurir = async function (req, res, next) {
         return res.status(400).json({status: 400, message: e.message});
     }
 };
+exports.getKurirbyUser = async function (req, res, next) {
+    var params = req.body;
+    try {
+        var kurir = await kurirservice.getKurirByUsername(params);
+        return res.status(200).json({status: 200, data: kurir, message: 'Successfully get kurir'});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};

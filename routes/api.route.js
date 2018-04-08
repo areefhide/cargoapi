@@ -10,6 +10,7 @@ var company = require('./api/companies.route');
 var mitra = require('./api/mitras.route');
 var paket = require('./api/pakets.route');
 var kurir = require('./api/kurirs.route');
+var users = require('./api/users.route');
 
 // router.use('/kota',passport.authenticate('jwt',{session:false}),kota);
 router.use('/kota',kota);
@@ -20,6 +21,7 @@ router.use('/company',company);
 router.use('/mitra',mitra);
 router.use('/paket',paket);
 router.use('/kurir',kurir);
+router.use('/users',users);
 
 
 module.exports = router;

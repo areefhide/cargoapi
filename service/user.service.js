@@ -46,3 +46,16 @@ exports.getUsers = async function(query, page, limit){
         throw Error('Error while Paginating Users');
     }
 };
+
+exports.changePassword = async function(params){
+    var id = params.id;
+    var password = params.password;
+    try {
+        var users = await User.findById(id);
+        users.password = password;
+        var user = await users.save();
+        return user;
+    } catch (error) {
+        throw Error('Error while update User');
+    }
+};

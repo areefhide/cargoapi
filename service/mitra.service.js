@@ -59,3 +59,20 @@ exports.getMitrabyId = async function(id){
         throw e;
     }
 };
+
+exports.updateMitra = async function(id,params){
+    var wilayah = [];
+    params.wilayah.forEach(element => {
+        wilayah.push(element);
+    });
+    try {
+        var updated = await Mitra.findById(id);        
+        updated.nama = params.nama;
+        updated.wilayah = wilayah;
+        updated.pic = params.pic;
+        var saved = await updated.save();
+        return saved;
+    } catch (e) {
+        throw e;
+    }
+};

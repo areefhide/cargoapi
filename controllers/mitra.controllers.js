@@ -43,12 +43,23 @@ exports.deleteMitra = async function (req, res, next) {
     }
 };
 
-exports.getMitra = async function(req,res,next){
+exports.getMitrabyId = async function(req,res,next){
     var id = req.params.id;
     try {
-        var mitra = await mitraservice.getMitra(id);
+        var mitra = await mitraservice.getMitrabyId(id);
         return res.status(200).json({status: 200, data: mitra, message: 'Successfully get Mitra'});
     } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};
+
+exports.updateMitra = async function(req,res,next){
+    var id = req.params.id;
+    var params = req.body;
+    try {        
+        var mitra = await mitraservice.updateMitra(id,params);
+        return res.status(200).json({status: 200, data: mitra, message: 'Successfully update Mitra'});
+    } catch (error) {
         return res.status(400).json({status: 400, message: e.message});
     }
 };

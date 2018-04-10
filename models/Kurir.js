@@ -6,6 +6,7 @@ var KurirSchema = new Schema({
     nama: String,
     MitraId: { type: Schema.Types.ObjectId, ref: 'Mitra'},
     userId: { type: Schema.Types.ObjectId, ref: 'User'},
+    isActive:{type: Boolean, default: true},
 });
 
 KurirSchema.plugin(mongoosePaginate);

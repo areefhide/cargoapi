@@ -7,6 +7,7 @@ var MitraSchema = new Schema({
     pic: String,
     username: String,
     wilayah:[String],
+    isActive: {type: Boolean, default:true},
 });
 MitraSchema.plugin(mongoosePaginate);
 

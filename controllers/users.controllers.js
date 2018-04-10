@@ -24,9 +24,10 @@ exports.getUserbyId = async function (req,res,next){
 
 
 exports.changePassword = async function(req,res,next){
-    var user = req.params.id;
+    var userid = req.params.id;
+    var password = req.body.password;
     try {
-        var user = await loginservice.changePassword(user);
+        var user = await loginservice.changePassword({id: userid, password: password});
         return res.status(200).json({status: 200, data: user, message: 'Successfully get users'});
     } catch (error) {
         return res.status(400).json({status: 400, message: e.message});
@@ -42,4 +43,12 @@ exports.createAdmin = async function(req,res,next){
         return res.status(400).json({status: 400, message: e.message});
     }
 };
-
+exports.enabledisableUser = async function(req,res,next){
+    var id = req.params.id;
+    try {
+        var updated = await loginservice.enabledisable(id);
+        return res.status(200).json({status: 200, data: updated, message: 'Successfully update User'});
+    } catch (error) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+}

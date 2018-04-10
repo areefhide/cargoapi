@@ -8,7 +8,8 @@ var UserSchema = new Schema({
     password: {type: String, required: true},
     role:{type: String,
         enum: ['admin', 'kurir','agen']
-    }
+    },
+    isActive :{type: Boolean, default: true}
 });
 UserSchema.pre('save', function(next){
     var user = this;

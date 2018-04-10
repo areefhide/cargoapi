@@ -3,7 +3,7 @@ _this = this;
 
 exports.findbyUsername = async function (params) {
     try {
-        var user = await User.findOne({username: params.username});
+        var user = await User.findOne({username: params.username, isActive: true});
         return user;
     } catch (er) {
         throw Error(er);
@@ -53,6 +53,17 @@ exports.changePassword = async function(params){
     try {
         var users = await User.findById(id);
         users.password = password;
+        var user = await users.save();
+        return user;
+    } catch (error) {
+        throw Error('Error while update User');
+    }
+};
+exports.enabledisable = async function(params){
+    var id= params;
+    try {
+        var users = await User.findById(id);
+        users.isActive = !users.isActive;
         var user = await users.save();
         return user;
     } catch (error) {

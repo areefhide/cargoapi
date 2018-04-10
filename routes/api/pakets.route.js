@@ -8,5 +8,6 @@ router.get('/:lunas',paketcontrollers.getPaketsByStatus);
 router.post('/',paketcontrollers.createPaket);
 router.get('/:id/id',paketcontrollers.getPaket);
 router.get('/:id/detail',paketcontrollers.getPaketDetails);
+router.delete('/:id',paketcontrollers.deletePaket);
 
 module.exports = router;

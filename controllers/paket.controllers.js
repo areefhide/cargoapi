@@ -86,3 +86,13 @@ exports.getPaketsByStatus = async function(req,res,next){
         return res.status(400).json({status: 400, message: e.message});
     }
 };
+
+exports.deletePaket = async function(req,res,next){
+    var id = req.params.id;
+    try {
+        var deleted = await paketservice.delete(id);
+        return res.status(200).json({status: 200, data: deleted, message: 'Successfully delete Paket'});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+}

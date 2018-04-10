@@ -55,3 +55,12 @@ exports.getPaketById = async function (id) {
         throw Error('Error while get Paket');
     }  
 };
+
+exports.delete = async function (id){
+    try {
+        var deleted = await Paket.findByIdAndRemove(id);
+        return deleted;
+    } catch (e) {
+        throw e;
+    }
+}

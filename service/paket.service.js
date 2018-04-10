@@ -49,7 +49,8 @@ exports.getPaketById = async function (id) {
         var paket = await Paket.findOne({_id:id})
         .populate({path:'pengirim',model: 'Customer'})
         .populate({path:'penerima',model: 'Customer'})
-        .populate({path: 'projectId',model: 'Project'});
+        .populate({path: 'projectId',model: 'Project'})
+        .populate({path: 'history', model: 'PaketHistory'});
         return paket;
     } catch (error) {
         throw Error('Error while get Paket');

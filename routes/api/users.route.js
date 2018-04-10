@@ -6,5 +6,6 @@ var usercontrollers = require('../../controllers/users.controllers');
 router.get('/',usercontrollers.getUsers);
 router.get('/:id',usercontrollers.getUserbyId);
 router.put('/:id',usercontrollers.changePassword);
+router.post('/',usercontrollers.createAdmin);
 
 module.exports = router;

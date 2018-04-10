@@ -1,4 +1,6 @@
 var Kurir = require('../models/Kurir');
+var User = require('../models/User');
+var Mitra = require('../models/Mitra');
 
 _this = this;
 
@@ -44,9 +46,29 @@ exports.getKurir = async function (params) {
 exports.getKurirByUsername = async function (params) {  
     var nama = params.username;
     try {
-        var kurir = await Kurir.findOne();
+      
+        var user = await User.findOne({username: nama});
+        
+        Kurir.find({userId: user._id}).exec(function(err,kurir){
+            if (err) return handleError(err);
+            console.log('The stories are an array: ', kurir);
+        });
+        var kurir = await Kurir.findOne({userId: user._id}).populate({path:'userId',model: 'User'});       
+        
         return kurir;
     } catch (error) {
-        throw Error('error while get Kurir');
+        throw error;
+    }
+};
+
+exports.getKurirsByMitraId = async function (params) {
+    var mitraId = params.MitraId;
+    try {
+        var mitra = await Mitra.findById(mitraId);
+        console.log(mitra);
+        var kurirs = await Kurir.find({MitraId: mitra._id});
+        return kurirs;
+    } catch (error) {
+        throw error;
     }
 };

@@ -33,11 +33,21 @@ exports.getKurir = async function (req, res, next) {
     }
 };
 exports.getKurirbyUser = async function (req, res, next) {
-    var params = req.body;
+    var params = req.params;
     try {
         var kurir = await kurirservice.getKurirByUsername(params);
         return res.status(200).json({status: 200, data: kurir, message: 'Successfully get kurir'});
     } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};
+
+exports.getKurirsbyMitraId = async function(req,res,next){
+    var params = req.params;
+    try {
+        var kurirs = await kurirservice.getKurirsByMitraId(params);
+        return res.status(200).json({status: 200, data: kurirs, message: 'Successfully get kurir'});
+    } catch (error) {
         return res.status(400).json({status: 400, message: e.message});
     }
 };

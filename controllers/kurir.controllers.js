@@ -47,7 +47,38 @@ exports.getKurirsbyMitraId = async function(req,res,next){
     try {
         var kurirs = await kurirservice.getKurirsByMitraId(params);
         return res.status(200).json({status: 200, data: kurirs, message: 'Successfully get kurir'});
-    } catch (error) {
+    } catch (e) {
         return res.status(400).json({status: 400, message: e.message});
     }
 };
+exports.deleteKurirById = async function(req,res,next){
+    var id = req.params.id;
+    try {
+        var deleted = await kurirservice.deleteKurir(id);
+        return res.status(204).json({status:204, message: "Succesfully delete Customer"});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};
+
+exports.getKurirById = async function(req,res,next){
+    var id = req.params.id;
+    try {
+        var kurir = await kurirservice.getKurirById(id);
+        return res.status(200).json({status: 200, data: kurir, message: 'Successfully get kurir'});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};
+
+exports.updateKurir = async function(req,res,next){
+    var id = req.params.id;
+    var kurir = req.body;
+    try {
+        var kurir = await kurirservice.updateKurir(id,kurir);
+        return res.status(200).json({status: 200, data: kurir, message: 'Successfully update kurir'});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};
+

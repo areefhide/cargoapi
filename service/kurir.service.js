@@ -72,3 +72,33 @@ exports.getKurirsByMitraId = async function (params) {
         throw error;
     }
 };
+
+exports.deleteKurir = async function(id){
+    try {
+        var deleted = await Kurir.findByIdAndRemove(id);
+        return deleted;
+    } catch (error) {
+        throw error;
+    }
+};
+
+exports.getKurirById = async function(id){
+    try {
+        var kurir = await Kurir.findById(id);
+        return kurir;
+    } catch (error) {
+        throw error;
+    }
+};
+
+exports.updateKurir = async function(id,params){
+    try {
+        var kurir = await Kurir.findById(id);
+        kurir.nama = params.nama;
+        kurir.MitraId = params.MitraId;
+        var updated = await kurir.save();
+        return updated;
+    } catch (error) {
+        throw error; 
+    }
+}

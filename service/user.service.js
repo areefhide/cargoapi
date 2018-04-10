@@ -53,6 +53,7 @@ exports.changePassword = async function(params){
     try {
         var users = await User.findById(id);
         users.password = password;
+        users.role = params.role;
         var user = await users.save();
         return user;
     } catch (error) {

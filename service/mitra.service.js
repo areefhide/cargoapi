@@ -51,3 +51,11 @@ exports.deletMitra = async function(id){
         throw Error("Error Occured while Deleting the Mitra");
     }
 };
+exports.getMitrabyId = async function(id){
+    try {
+        var mitra = await Mitra.findById(id);
+        return mitra;
+    } catch (e) {
+        throw e;
+    }
+};

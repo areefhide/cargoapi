@@ -45,7 +45,7 @@ exports.createCustomer = async function(customer){
         var newCustomer = await newCustomer.save();
         return newCustomer;
     } catch (e) {
-        throw Error("Error while Creating Kota");
+        throw Error("Error while Creating Customer");
     }
 };
 
@@ -55,5 +55,19 @@ exports.deleteCustomer = async function(id){
         return deleted;
     } catch (e) {
         throw Error("Error Occured while Deleting the Customer")
+    }
+};
+
+exports.updateCustomer = async function(id,customer){
+    try {
+        var edited = await Customer.findById(id);
+        edited.nama = customer.nama;
+        edited.perusahaan = customer.perusahaan;
+        edited.alamat = customer.alamat;
+        edited.telepon = customer.telepon;
+        var data = await edited.save();
+        return data;
+    } catch (error) {
+        throw Error("Error while updating Customer");
     }
 };

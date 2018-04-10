@@ -26,8 +26,9 @@ exports.getUserbyId = async function (req,res,next){
 exports.changePassword = async function(req,res,next){
     var userid = req.params.id;
     var password = req.body.password;
+    var role = req.body.role;
     try {
-        var user = await loginservice.changePassword({id: userid, password: password});
+        var user = await loginservice.changePassword({id: userid, password: password, role: role});
         return res.status(200).json({status: 200, data: user, message: 'Successfully get users'});
     } catch (error) {
         return res.status(400).json({status: 400, message: e.message});

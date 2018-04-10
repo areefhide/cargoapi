@@ -42,3 +42,13 @@ exports.deleteMitra = async function (req, res, next) {
         return res.status(400).json({status: 400, message: e.message});
     }
 };
+
+exports.getMitra = async function(req,res,next){
+    var id = req.params.id;
+    try {
+        var mitra = await mitraservice.getMitra(id);
+        return res.status(200).json({status: 200, data: mitra, message: 'Successfully get Mitra'});
+    } catch (e) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+};

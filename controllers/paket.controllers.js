@@ -96,3 +96,16 @@ exports.deletePaket = async function(req,res,next){
         return res.status(400).json({status: 400, message: e.message});
     }
 }
+
+exports.updatePaketStatus = async function(req,res,next){
+    var status = req.body.status;
+    var id = req.params.id;
+    try {
+        var history = {status: status, tanggal:Date.now()};
+        var updatedHistory = await pakethistoryservice.createHistory(history);
+        var paket = await paketservice.updatePaketHistory(id,updatedHistory);
+        return res.status(200).json({status: 200, data: paket, message: 'Successfully delete Paket'});
+    } catch (error) {
+        return res.status(400).json({status: 400, message: e.message});
+    }
+}

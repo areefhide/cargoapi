@@ -9,5 +9,6 @@ router.post('/',paketcontrollers.createPaket);
 router.get('/:id/id',paketcontrollers.getPaket);
 router.get('/:id/detail',paketcontrollers.getPaketDetails);
 router.delete('/:id',paketcontrollers.deletePaket);
+router.put('/:id/status',paketcontrollers.updatePaketStatus);
 
 module.exports = router;

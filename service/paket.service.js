@@ -64,4 +64,15 @@ exports.delete = async function (id){
     } catch (e) {
         throw e;
     }
-}
+};
+
+exports.updatePaketHistory = async function(id,history){
+    try {
+        var paket = await Paket.findById(id);
+        paket.status = history.status;
+        paket.history.push(history._id);
+        var saved = await paket.save();
+    } catch (error) {
+        throw error;
+    }
+};

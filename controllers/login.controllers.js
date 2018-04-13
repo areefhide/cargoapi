@@ -16,7 +16,7 @@ exports.getLogin = async function (req, res, next) {
             user.comparePassword(req.body.password,function(err,isMatch){
                 if(isMatch && !err){                    
                     var token = jwt.sign(user.toObject(), config.secret);
-                    res.json({success: true, token: 'JWT ' + token});
+                    res.json({success: true, token: 'JWT ' + token, username: user.username, role: user.role, pt: user.perusahaan});
                 }else{
                     res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
                 }

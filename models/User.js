@@ -6,8 +6,9 @@ var bcrypt = require('bcrypt-nodejs');
 var UserSchema = new Schema({
     username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
+    perusahaan: String,
     role:{type: String,
-        enum: ['admin', 'kurir','agen']
+        enum: ['admin','admin-project','admin-direct', 'kurir','agen']
     },
     isActive :{type: Boolean, default: true}
 });

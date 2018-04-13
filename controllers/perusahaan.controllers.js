@@ -3,6 +3,7 @@ _this = this;
 
 exports.createCompany = async function (req,res,next) {
     var persh = req.body;
+    var file = req.file;
     try {
         var savedPersh = await PerusahaanService.createPerusahaan(persh);
         return res.status(200).json({status: 200, data: savedPersh, message: 'Successfully create Project'});

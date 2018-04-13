@@ -8,6 +8,7 @@ var MitraSchema = new Schema({
     username: String,
     wilayah:[String],
     isActive: {type: Boolean, default:true},
+    Kurir: [{type: Schema.Types.ObjectId, ref: 'Kurir'}],
 });
 MitraSchema.plugin(mongoosePaginate);
 

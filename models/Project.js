@@ -8,7 +8,7 @@ var ProjectSchema = new Schema({
     mulai: {type: Date, default: Date.now},
     berakhir: {type: Date, default: Date.now},
     nilai: Number,
-    sisa: Number,
+    
 });
 
 ProjectSchema.plugin(mongoosePaginate);

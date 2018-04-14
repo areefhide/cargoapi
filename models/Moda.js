@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var ModaSchema = new Schema({
     nama: String,
+    description: String,
 });
 
 ModaSchema.plugin(mongoosePaginate);

@@ -3,7 +3,8 @@
 
  exports.createPerusahaan = async function (params) {
    var newCompany = new Perusahaan({
-        nama: params.nama
+        nama: params.nama,
+        logo: params.logo,
    });
    try {
        var savedCompany = await newCompany.save();

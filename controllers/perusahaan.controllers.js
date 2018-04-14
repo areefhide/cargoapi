@@ -4,9 +4,9 @@ _this = this;
 exports.createCompany = async function (req,res,next) {
     var persh = req.body;
     var file = req.file;
-    try {
-        console.log(file);
-        var savedPersh = await PerusahaanService.createPerusahaan(persh);
+    try {        
+        var logo = 'images/' + file.filename;
+        var savedPersh = await PerusahaanService.createPerusahaan({nama: persh.nama, logo: logo });
         return res.status(200).json({status: 200, data: savedPersh, message: 'Successfully create Project'});
     } catch (e) {
         return res.status(400).json({status: 400, message: e.message});

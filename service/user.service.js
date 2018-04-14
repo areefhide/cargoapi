@@ -24,6 +24,7 @@ exports.create = async function(params){
     var newUser = new User({
         username: params.username,
         password: params.password,
+        perusahaan: params.perusahaan,
         role: params.role
     });
     try {
